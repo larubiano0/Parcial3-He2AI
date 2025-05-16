@@ -23,7 +23,7 @@
 Esta aplicación web está diseñada para apoyar el curso **Pensando Problemas**, ofreciendo **explicaciones interactivas de términos y notación matemática**. Utiliza una combinación de definiciones predefinidas y generación dinámica por IA (Gemini) para facilitar la comprensión de símbolos, definiciones y ejemplos formales.
 
 ### Objetivos
-- Proveer un glosario interactivo de notación matemática (álgebra, topología, análisis).  
+- Proveer un glosario interactivo de notación matemática.  
 - Permitir a estudiantes consultar ejemplos y definiciones en tiempo real.  
 - Garantizar renderizado correcto de LaTeX usando MathJax.  
 - Cubrir el nivel 4 de la rúbrica: documentación exhaustiva, código robusto, presentación clara y justificación técnica.
@@ -102,7 +102,12 @@ Usuario → Frontend → FastAPI
 4. **API KEY**:
 - Copia `key.txt` a la raíz
 - Inserta tu clave de Gemini en `key.txt`
----
+
+5. **Iniciar la aplicación localmente**:
+   ```bash
+   uvicorn app:app --reload
+   ```
+La aplicación se hostea en http://localhost:8000
 ### 5. Detalles de Uso
 
 ### Endpoints API
