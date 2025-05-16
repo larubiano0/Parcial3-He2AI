@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
 [![ChatBot](https://img.shields.io/badge/API-Gemini-lightgrey.svg)]()
 
-## 📋 Tabla de Contenidos
+## Tabla de Contenidos
 
 1. Visión General  
 2. Rúbrica de Evaluación  
@@ -35,17 +35,7 @@ Esta aplicación web está diseñada para apoyar el curso **Pensando Problemas**
 > La interfaz permite seleccionar términos matemáticos, ver explicaciones con notación LaTeX y hacer consultas personalizadas con IA.
 ---
 
-## 2. Rúbrica de Evaluación
-| Criterio                       |                                                                                                                  | Sección Reference          |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------|----------------------------|
-| Documentación del Proyecto     | Instrucciones precisas, justificación técnica, glosario detallado, gestión de proyecto clara (milestones, issues).| Instalación, CI/CD         |
-| Código Funcional               | Código PEP8, modular, sin errores, APIs documentadas, manejo de excepciones y fallback para IA robusto.         | API, Pruebas               |
-| Valor de la IA Generativa      | Justificación del uso de Gemini para notación matemática, prompt engineering documentado, métricas de calidad.   | Ingeniería de Prompts      |
-| Presentación                   | Pitch de 10′ con guion, slides de notación y ejemplos, demo en vivo fluida.                                     | Contribución, Demo         |
-
----
-
-## 3. Arquitectura y Diseño Técnico
+## 2. Arquitectura y Diseño Técnico
 
 ### Componentes
 1. **Frontend Estático** (`static/`):
@@ -66,13 +56,33 @@ Esta aplicación web está diseñada para apoyar el curso **Pensando Problemas**
 
 ### Diagrama Simplificado
 ```text
-Usuario → Frontend (app.js) → FastAPI (app.py) → Gemini API
-                       ↓                     ↑
-               terminos.json         Fallback local
+Usuario → Frontend → FastAPI
+                  ├→ terminos.json (lookup)
+                  └→ Gemini API ← Prompt enriquecido
+                                 ↓
+                           Respuesta generada
 ```
----
+### Integración RAG y Agente React
 
-### 4. Instalación y Configuración
+Implementamos una versión simplificada de **Retrieval-Augmented Generation (RAG)** utilizando una base local construida manualmente a partir de apuntes del curso (`terminos.json`). Esta base actúa como una forma de recuperación estructurada de conocimiento, donde cada término está asociado a definiciones y ejemplos relevantes.
+
+El flujo de interacción funciona así:
+
+1. El usuario selecciona o consulta un término.
+2. La aplicación recupera la información relacionada desde la base local.
+3. Se construye un prompt combinando esa información con la pregunta del usuario.
+4. El prompt es enviado a Gemini para generar una respuesta enriquecida y contextualizada.
+
+Además, exploramos el diseño de un **agente tipo React** (Reasoning + Action), con lógica para:
+
+- Analizar la complejidad de la consulta.
+- Decidir si responder con la base local o generar con IA.
+- Justificar los pasos realizados.
+
+Si bien no implementamos aún la lógica completa del agente, dejamos estructurado su funcionamiento para una futura versión del proyecto.
+
+
+### 3. Instalación y Configuración
 
 1. **Clonar repositorio**:
    ```bash
@@ -91,7 +101,7 @@ Usuario → Frontend (app.js) → FastAPI (app.py) → Gemini API
 - Copia `key.txt` a la raíz
 - Inserta tu clave de Gemini en `key.txt`
 ---
-### 5. Detalles de Uso
+### 4. Detalles de Uso
 
 ### Endpoints API
 
@@ -129,7 +139,7 @@ curl -X POST http://localhost:8000/api/ask \
   -d '{"term":"Conjunto","question":"¿Cómo se define matemáticamente?"}'
 ```
 ---
-### 6. Ingeniería de Prompts
+### 5. Ingeniería de Prompts
 
 System Prompt
 ```json
@@ -150,7 +160,7 @@ Parámetros
 - `max_tokens`: 600.
 - `timeout`: 3s con fallback.
 ---
-### 7. Pruebas y Calidad de Código
+### 6. Pruebas y Calidad de Código
 - Tests unitarios en `tests/`: cobertura > 90%.  
 - Ejecutar:  
   ```bash
@@ -158,12 +168,12 @@ Parámetros
 - Lint con flake8 y formato con black.
 - Pre-commit hooks configurados en .pre-commit-config.yaml.
 ---
-### 8. Seguridad y Gestión de Claves
+### 7. Seguridad y Gestión de Claves
 - Clave en `key.txt`, ignorada por `.gitignore`
 - Carga con `python-dotenv` y validación de existencia
 - No almacenar prompts sensibles en logs de producción
 
-### 9. Despliegue y CI/CD
+### 8. Despliegue y CI/CD
 Local
 ```bash
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
@@ -182,7 +192,7 @@ docker build -t pensando-problemas .
 docker run -d -p 8000:8000 pensando-problemas
 ```
 ---
-### 10. Impacto Educativo y Métricas
+### 9. Impacto Educativo y Métricas
 
 | Métrica                         | Objetivo / Valor                                    |
 |---------------------------------|-----------------------------------------------------|
@@ -192,7 +202,7 @@ docker run -d -p 8000:8000 pensando-problemas
 | Estabilidad del servicio        | 99.9% uptime (Locust tests a 50 RPS)                |
 
 ---
-### 11. Contribución y Flujo de Trabajo
+### 10. Contribución y Flujo de Trabajo
 1. Fork el repositorio
 2. Abre una issue con tu propuesta
 3. Crea rama (`feature/tu-mejora`)
@@ -201,11 +211,34 @@ docker run -d -p 8000:8000 pensando-problemas
 6. Merge tras aprobación y checks verdes
 7. Uso de GitHub Projects para milestones
 ---
-### 12. Limitaciones y Futuras Mejoras
-- Actualmente solo en español
-- Soporte LaTeX limitado a MathJax; considerar KaTeX
-- Integrar cache (Redis) para consultas frecuentes
-- Añadir autenticación de usuarios para seguimiento
+## 11. Limitaciones y Futuras Mejoras
+
+- Actualmente solo funciona en español.
+- El soporte de notación LaTeX es limitado a MathJax; puede haber problemas con expresiones muy complejas.
+- La aplicación depende de una conexión activa y estable con la API de Gemini.
+- No hay autenticación ni personalización por usuario.
+- No se ha medido aún el desempeño bajo carga real con múltiples usuarios simultáneos.
+
+### Propuestas de mejora
+
+- Implementar **almacenamiento en caché** (ej. Redis) para términos populares.
+- Desarrollar **sistema de cuentas** para seguimiento del aprendizaje individual.
+- Ampliar la base de datos local con definiciones validadas manualmente por docentes.
+- Permitir entrada por voz o imagen matemática (OCR + LLM).
+
 ---
+### 12. Aprendizajes del Proyecto
+
+Durante el desarrollo del proyecto aplicamos múltiples conceptos vistos en clase, lo que nos permitió fortalecer habilidades técnicas y analíticas clave:
+
+- Implementación de un backend funcional con FastAPI, integrando servicios externos (Gemini).
+- Ingeniería de prompts específica para problemas matemáticos, incluyendo notación y ejemplos formales.
+- Visualización correcta de LaTeX con MathJax en el frontend.
+- Despliegue local y por contenedores (Docker).
+- Uso de pruebas automatizadas y cobertura de código.
+- Integración de flujos de trabajo colaborativos con Git y GitHub.
+
+Además, entendimos cómo la IA generativa puede ser una herramienta poderosa para acompañar procesos de aprendizaje estructurado, especialmente en cursos con carga matemática abstracta.
+
 ### 13. Licencia
 Este proyecto está bajo la MIT License. Consulta LICENSE para más información.
