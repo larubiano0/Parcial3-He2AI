@@ -6,18 +6,17 @@
 ## Tabla de Contenidos
 
 1. Visión General  
-2. Rúbrica de Evaluación  
+2. Recuperación y Generación (RAG) + Agente React  
 3. Arquitectura y Diseño Técnico  
 4. Instalación y Configuración  
 5. Detalles de Uso  
 6. Ingeniería de Prompts  
-7. Pruebas y Calidad de Código  
-8. Seguridad y Gestión de Claves  
-9. Despliegue y CI/CD  
-10. Impacto Educativo y Métricas  
-11. Contribución y Flujo de Trabajo  
-12. Limitaciones y Futuras Mejoras  
-13. Licencia
+7. Seguridad y Gestión de Claves  
+8. Contribución y Flujo de Trabajo  
+9. Limitaciones y Mejoras Futuras
+10. Aprendizajes del Proyecto 
+11. Licencia
+
 ---
 
 ## 1. Visión General
@@ -34,8 +33,30 @@ Esta aplicación web está diseñada para apoyar el curso **Pensando Problemas**
 ![Vista previa de la aplicación](assets/screenshot.png)  
 > La interfaz permite seleccionar términos matemáticos, ver explicaciones con notación LaTeX y hacer consultas personalizadas con IA.
 ---
+## 2. Recuperación y Generación (RAG) + Agente React
 
-## 2. Arquitectura y Diseño Técnico
+Este proyecto implementa una versión simplificada de **Retrieval-Augmented Generation (RAG)**. En lugar de utilizar embeddings o búsqueda vectorial, se construyó manualmente una base de conocimientos (`terminos.json`) a partir de apuntes del curso, organizada por término matemático.
+
+### Flujo del RAG simplificado:
+
+1. El usuario consulta un término o hace una pregunta relacionada.
+2. El backend recupera la definición correspondiente desde `terminos.json`.
+3. Se construye un prompt combinando esa definición con la consulta del usuario.
+4. El prompt enriquecido se envía al modelo generativo (Gemini), que produce una respuesta contextualizada.
+
+Este enfoque permite mejorar la precisión y la relevancia de las respuestas, ya que el modelo parte de una base específica del curso antes de generar contenido.
+
+### Agente React (Reasoning + Action)
+
+Adicionalmente, diseñamos un prototipo de agente tipo **React** con el siguiente comportamiento:
+
+- **Razonamiento**: interpreta la complejidad de la consulta y determina si debe responder directamente o usar la IA.
+- **Acción**: decide entre responder desde la base local (`terminos.json`) o consultar Gemini.
+- **Justificación**: explica los pasos seguidos para llegar a una respuesta.
+
+Aunque esta lógica aún no está integrada al flujo principal, su arquitectura está diseñada y lista para ser incorporada en versiones futuras como extensión del proyecto.
+
+## 3. Arquitectura y Diseño Técnico
 
 ### Componentes
 1. **Frontend Estático** (`static/`):
@@ -62,27 +83,8 @@ Usuario → Frontend → FastAPI
                                  ↓
                            Respuesta generada
 ```
-### Integración RAG y Agente React
 
-Implementamos una versión simplificada de **Retrieval-Augmented Generation (RAG)** utilizando una base local construida manualmente a partir de apuntes del curso (`terminos.json`). Esta base actúa como una forma de recuperación estructurada de conocimiento, donde cada término está asociado a definiciones y ejemplos relevantes.
-
-El flujo de interacción funciona así:
-
-1. El usuario selecciona o consulta un término.
-2. La aplicación recupera la información relacionada desde la base local.
-3. Se construye un prompt combinando esa información con la pregunta del usuario.
-4. El prompt es enviado a Gemini para generar una respuesta enriquecida y contextualizada.
-
-Además, exploramos el diseño de un **agente tipo React** (Reasoning + Action), con lógica para:
-
-- Analizar la complejidad de la consulta.
-- Decidir si responder con la base local o generar con IA.
-- Justificar los pasos realizados.
-
-Si bien no implementamos aún la lógica completa del agente, dejamos estructurado su funcionamiento para una futura versión del proyecto.
-
-
-### 3. Instalación y Configuración
+### 4. Instalación y Configuración
 
 1. **Clonar repositorio**:
    ```bash
@@ -101,7 +103,7 @@ Si bien no implementamos aún la lógica completa del agente, dejamos estructura
 - Copia `key.txt` a la raíz
 - Inserta tu clave de Gemini en `key.txt`
 ---
-### 4. Detalles de Uso
+### 5. Detalles de Uso
 
 ### Endpoints API
 
@@ -139,79 +141,39 @@ curl -X POST http://localhost:8000/api/ask \
   -d '{"term":"Conjunto","question":"¿Cómo se define matemáticamente?"}'
 ```
 ---
-### 5. Ingeniería de Prompts
+## 6. Ingeniería de Prompts
 
-System Prompt
-```json
-{
-  "role": "system",
-  "content": "Eres un asistente matemático experto en notación formal. Explica con rigor, usando ejemplos y LaTeX cuando sea necesario."
+La generación de respuestas se basa en un `system prompt` fijo, más un mensaje del usuario que combina el término seleccionado y su consulta. Esta estructura se envía como JSON a la API de Gemini mediante una llamada HTTP.
+
+### Prompt utilizado (definido en `app.py`):
+
+```python
+system_prompt = {
+    "role": "system",
+    "content": (
+        "Eres un asistente matemático experto en notación formal. "
+        "Explica con rigor, usando ejemplos y LaTeX cuando sea necesario."
+    )
 }
 ```
-Few-Shot Example
-```json
-{
-  "role": "user",
-  "content": "Término: Serie de Taylor. Ejemplo con f(x)=e^x."
+El user_prompt se genera dinámicamente así:
+```python
+user_prompt = {
+    "role": "user",
+    "content": f"Término: {term}. Pregunta: {question}"
 }
 ```
-Parámetros
-- `temperature`: 0.2 (para respuestas precisas).
-- `max_tokens`: 600.
-- `timeout`: 3s con fallback.
----
-### 6. Pruebas y Calidad de Código
-- Tests unitarios en `tests/`: cobertura > 90%.  
-- Ejecutar:  
-  ```bash
-  pytest --cov=src tests/
-- Lint con flake8 y formato con black.
-- Pre-commit hooks configurados en .pre-commit-config.yaml.
----
+
 ### 7. Seguridad y Gestión de Claves
 - Clave en `key.txt`, ignorada por `.gitignore`
 - Carga con `python-dotenv` y validación de existencia
 - No almacenar prompts sensibles en logs de producción
 
-### 8. Despliegue y CI/CD
-Local
-```bash
-uvicorn app:app --host 0.0.0.0 --port 8000 --reload
-```
-Docker
-```dockerfile
-FROM python:3.10-slim
-WORKDIR /app
-COPY . .
-RUN pip install -r requirements.txt
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
-```
-Build y correr:
-```bash
-docker build -t pensando-problemas .
-docker run -d -p 8000:8000 pensando-problemas
-```
 ---
-### 9. Impacto Educativo y Métricas
-
-| Métrica                         | Objetivo / Valor                                    |
-|---------------------------------|-----------------------------------------------------|
-| Tasa de comprensión             | +40% (autoevaluaciones pre/post)                    |
-| Tiempo medio de consulta        | < 30s                                               |
-| Calidad de explicación (rúbrica)| ≥4.7/5 (encuestas a estudiantes)                     |
-| Estabilidad del servicio        | 99.9% uptime (Locust tests a 50 RPS)                |
+### 8. Contribución y Flujo de Trabajo
 
 ---
-### 10. Contribución y Flujo de Trabajo
-1. Fork el repositorio
-2. Abre una issue con tu propuesta
-3. Crea rama (`feature/tu-mejora`)
-4. Commits atómicos con referencias a issues
-5. Pull request: descripción, tests y snapshots
-6. Merge tras aprobación y checks verdes
-7. Uso de GitHub Projects para milestones
----
-## 11. Limitaciones y Futuras Mejoras
+## 9. Limitaciones y Futuras Mejoras
 
 - Actualmente solo funciona en español.
 - El soporte de notación LaTeX es limitado a MathJax; puede haber problemas con expresiones muy complejas.
@@ -227,18 +189,19 @@ docker run -d -p 8000:8000 pensando-problemas
 - Permitir entrada por voz o imagen matemática (OCR + LLM).
 
 ---
-### 12. Aprendizajes del Proyecto
+### 10. Aprendizajes del Proyecto
 
 Durante el desarrollo del proyecto aplicamos múltiples conceptos vistos en clase, lo que nos permitió fortalecer habilidades técnicas y analíticas clave:
 
 - Implementación de un backend funcional con FastAPI, integrando servicios externos (Gemini).
 - Ingeniería de prompts específica para problemas matemáticos, incluyendo notación y ejemplos formales.
 - Visualización correcta de LaTeX con MathJax en el frontend.
-- Despliegue local y por contenedores (Docker).
-- Uso de pruebas automatizadas y cobertura de código.
-- Integración de flujos de trabajo colaborativos con Git y GitHub.
+- Configuración y uso de un entorno virtual reproducible para desarrollo.
+- Organización del código en rutas claras y separación de lógica.
+- Flujo de trabajo colaborativo con Git y GitHub (ramas, commits y revisiones).
 
-Además, entendimos cómo la IA generativa puede ser una herramienta poderosa para acompañar procesos de aprendizaje estructurado, especialmente en cursos con carga matemática abstracta.
+Además, entendimos cómo la IA generativa puede ser una herramienta poderosa para acompañar procesos de aprendizaje estructurado, especialmente en cursos con carga matemática abstracta. El proceso también nos permitió identificar oportunidades reales de mejora, como la integración futura de pruebas automáticas, optimización del flujo de consulta y personalización de respuestas.
 
-### 13. Licencia
+
+### 11. Licencia
 Este proyecto está bajo la MIT License. Consulta LICENSE para más información.
