@@ -90,8 +90,8 @@ Usuario → Frontend (app.js) → FastAPI (app.py) → Gemini API
 4. **API KEY**:
 - Copia `key.txt` a la raíz
 - Inserta tu clave de Gemini en `key.txt`
-
-## 5. Detalles de Uso
+---
+### 5. Detalles de Uso
 
 ### Endpoints API
 
@@ -127,8 +127,9 @@ Ejemplo con `curl`:
 curl -X POST http://localhost:8000/api/ask \
   -H "Content-Type: application/json" \
   -d '{"term":"Conjunto","question":"¿Cómo se define matemáticamente?"}'
-```  
-## 6. Ingeniería de Prompts
+```
+---
+### 6. Ingeniería de Prompts
 
 System Prompt
 ```json
@@ -148,21 +149,21 @@ Parámetros
 - `temperature`: 0.2 (para respuestas precisas).
 - `max_tokens`: 600.
 - `timeout`: 3s con fallback.
-
-## 7. Pruebas y Calidad de Código
+---
+### 7. Pruebas y Calidad de Código
 - Tests unitarios en `tests/`: cobertura > 90%.  
 - Ejecutar:  
   ```bash
   pytest --cov=src tests/
 - Lint con flake8 y formato con black.
 - Pre-commit hooks configurados en .pre-commit-config.yaml.
-
-## 8. Seguridad y Gestión de Claves
+---
+### 8. Seguridad y Gestión de Claves
 - Clave en `key.txt`, ignorada por `.gitignore`
 - Carga con `python-dotenv` y validación de existencia
 - No almacenar prompts sensibles en logs de producción
 
-## 9. Despliegue y CI/CD
+### 9. Despliegue y CI/CD
 Local
 ```bash
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
@@ -180,7 +181,8 @@ Build y correr:
 docker build -t pensando-problemas .
 docker run -d -p 8000:8000 pensando-problemas
 ```
-## 10. Impacto Educativo y Métricas
+---
+### 10. Impacto Educativo y Métricas
 
 | Métrica                         | Objetivo / Valor                                    |
 |---------------------------------|-----------------------------------------------------|
@@ -189,8 +191,8 @@ docker run -d -p 8000:8000 pensando-problemas
 | Calidad de explicación (rúbrica)| ≥4.7/5 (encuestas a estudiantes)                     |
 | Estabilidad del servicio        | 99.9% uptime (Locust tests a 50 RPS)                |
 
-
-## 11. Contribución y Flujo de Trabajo
+---
+### 11. Contribución y Flujo de Trabajo
 1. Fork el repositorio
 2. Abre una issue con tu propuesta
 3. Crea rama (`feature/tu-mejora`)
@@ -198,12 +200,12 @@ docker run -d -p 8000:8000 pensando-problemas
 5. Pull request: descripción, tests y snapshots
 6. Merge tras aprobación y checks verdes
 7. Uso de GitHub Projects para milestones
-
-## 12. Limitaciones y Futuras Mejoras
+---
+### 12. Limitaciones y Futuras Mejoras
 - Actualmente solo en español
 - Soporte LaTeX limitado a MathJax; considerar KaTeX
 - Integrar cache (Redis) para consultas frecuentes
 - Añadir autenticación de usuarios para seguimiento
-
-## 13. Licencia
+---
+### 13. Licencia
 Este proyecto está bajo la MIT License. Consulta LICENSE para más información.
