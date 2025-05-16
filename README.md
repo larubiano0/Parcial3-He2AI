@@ -190,6 +190,19 @@ user_prompt = {
 ---
 ### 8. Contribución y Flujo de Trabajo
 
+Este proyecto fue desarrollado de manera colaborativa, dividiendo responsabilidades según fortalezas individuales:
+
+- **Luis Rubiano**: Desarrollo del backend y lógica de integración con Gemini. Implementación de los endpoints API (`/terms`, `/ask`) y manejo de excepciones.
+- **Carlos Castillo**: Redacción técnica del README y documentación del proyecto. Organización estructural del repositorio y coherencia técnica.
+- **Manuela Pineda**: Diseño y presentación del pitch final. Apoyo en la validación comunicativa del contenido.
+- **Angie Campos**: Elaboración del glosario de términos (`terminos.json`) y creación del diagrama del patrón de diseño Agentic.
+- **Nicolás Martínez**: Co-diseño de la presentación final (pitch), revisión pedagógica de contenido y claridad en la interfaz.
+
+> Además, todos los miembros participaron en sesiones de revisión conjunta del código, pruebas funcionales y diseño de la interfaz.
+
+El flujo de trabajo se estructuró a través de GitHub, utilizando ramas específicas (`feature/`) y revisión por pares antes del merge.
+
+
 ---
 ## 9. Limitaciones y Futuras Mejoras
 
