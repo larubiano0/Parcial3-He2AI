@@ -30,7 +30,7 @@ Esta aplicación web está diseñada para apoyar el curso **Pensando Problemas**
 
 ### Vista previa de la aplicación
 
-![Vista previa de la aplicación](assets/screenshot.png)  
+![Vista previa de la aplicación](screenshot.png)  
 > La interfaz permite seleccionar términos matemáticos, ver explicaciones con notación LaTeX y hacer consultas personalizadas con IA.
 ---
 ## 2. Recuperación y Generación (RAG) + Agente React
