@@ -61,12 +61,12 @@
   },
   {
     "termino": "Función sobreyectiva",
-    "latex": "f: A \\rightarrow B \\text{ es sobreyectiva } \\iff \\forall b \\in B, \\exists a \\in A: f(a) = b",
+    "latex": "f: A \\rightarrow B es sobreyectiva \\iff \\forall b \\in B, \\exists a \\in A: f(a) = b",
     "explicacion_con_dinosaurios": "Una función sobreyectiva es como repartir sombreros de colores a los dinosaurios. Tenemos sombreros rojos, azules y verdes, y debemos asegurarnos de que al menos un dinosaurio use cada color de sombrero. No puede quedar ningún color sin usar."
   },
   {
     "termino": "Función biyectiva",
-    "latex": "f: A \\rightarrow B \\text{ es biyectiva } \\iff \\text{ es inyectiva y sobreyectiva}",
+    "latex": "f: A \\rightarrow B es biyectiva \\iff es inyectiva y sobreyectiva",
     "explicacion_con_dinosaurios": "Una función biyectiva es como asignar a cada dinosaurio una cama para dormir. Cada dinosaurio tiene exactamente una cama (inyectiva) y cada cama tiene exactamente un dinosaurio (sobreyectiva). No hay dinosaurios sin cama ni camas vacías."
   },
   {
@@ -156,7 +156,7 @@
   },
   {
     "termino": "Algoritmo",
-    "latex": "\\text{Algoritmo}",
+    "latex": "Algoritmo",
     "explicacion_con_dinosaurios": "Un algoritmo es como una receta para hacer algo paso a paso. Por ejemplo, para encontrar el dinosaurio más grande: 1) Mide cada dinosaurio, 2) Compara sus tamaños, 3) El que mida más es el más grande. Sigues estos pasos en orden y siempre llegas al resultado correcto."
   },
   {
@@ -256,37 +256,37 @@
   },
   {
     "termino": "Lema",
-    "latex": "\\text{Lema}",
+    "latex": "Lema",
     "explicacion_con_dinosaurios": "Un lema es como una pequeña pista sobre dinosaurios que nos ayuda a resolver un misterio más grande. Antes de descubrir por qué los dinosaurios se extinguieron, primero tenemos que saber qué comían y dónde vivían."
   },
   {
     "termino": "Teorema",
-    "latex": "\\text{Teorema}",
+    "latex": "Teorema",
     "explicacion_con_dinosaurios": "Un teorema es como un gran descubrimiento sobre dinosaurios que hemos comprobado muy cuidadosamente. Por ejemplo, 'todos los dinosaurios con plumas pueden mantener el calor mejor que los dinosaurios sin plumas'. Es algo que sabemos que es verdad."
   },
   {
     "termino": "Corolario",
-    "latex": "\\text{Corolario}",
+    "latex": "Corolario",
     "explicacion_con_dinosaurios": "Un corolario es como un descubrimiento extra sobre dinosaurios que obtenemos gratis después de hacer un gran descubrimiento. Si descubrimos que 'todos los dinosaurios con plumas pueden volar', entonces obtenemos gratis que 'el T-Rex no tenía plumas' porque sabemos que no podía volar."
   },
   {
     "termino": "Axioma",
-    "latex": "\\text{Axioma}",
+    "latex": "Axioma",
     "explicacion_con_dinosaurios": "Un axioma es como una regla básica sobre dinosaurios que aceptamos sin necesidad de comprobarla. Por ejemplo, 'todos los dinosaurios necesitan comida para vivir'. Es tan obvio que no necesitamos demostrarlo."
   },
   {
     "termino": "Prueba",
-    "latex": "\\text{Prueba}",
+    "latex": "Prueba",
     "explicacion_con_dinosaurios": "Una prueba es como seguir huellas de dinosaurios para descubrir dónde viven. Sigues un rastro de pistas, una tras otra, hasta que llegas a la cueva donde vive el dinosaurio. Así demuestras que el dinosaurio realmente vive allí."
   },
   {
     "termino": "Contradicción",
-    "latex": "\\text{Contradicción}",
+    "latex": "Contradicción",
     "explicacion_con_dinosaurios": "Una contradicción es como decir que un dinosaurio es al mismo tiempo muy grande y muy pequeño. No puede ser ambas cosas a la vez, así que sabemos que algo está mal en lo que estamos diciendo."
   },
   {
     "termino": "Inducción matemática",
-    "latex": "\\text{Inducción}",
+    "latex": "Inducción",
     "explicacion_con_dinosaurios": "La inducción matemática es como enseñar a los dinosaurios a formar una fila. Primero, le enseñas al primer dinosaurio a ponerse en fila. Luego, le enseñas a cada dinosaurio a ponerse detrás del dinosaurio anterior. Al final, ¡todos los dinosaurios están en fila!"
   },
   {
@@ -326,12 +326,12 @@
   },
   {
     "termino": "Moda estadística",
-    "latex": "\\text{Moda}",
+    "latex": "Moda",
     "explicacion_con_dinosaurios": "La moda es el tipo de dinosaurio que más se repite en un parque. Si en un parque hay 5 T-Rex, 3 Velociraptors y 2 Triceratops, la moda es el T-Rex porque es el que más hay."
   },
   {
     "termino": "Mediana estadística",
-    "latex": "\\text{Mediana}",
+    "latex": "Mediana",
     "explicacion_con_dinosaurios": "La mediana es como poner a los dinosaurios en fila del más pequeño al más grande, y elegir el que está justo en el medio. Si hay un número par de dinosaurios, tomamos los dos del medio y calculamos su tamaño promedio."
   }
 ]
