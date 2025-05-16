@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pensando Problemas - Conceptos Económicos</title>
+    <link rel="stylesheet" href="/styles.css">
+    <!-- Polyfill for ES6 features -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: ['base', 'ams', 'noerrors', 'noundefined'],
+            tags: 'all'   // Enable automatic equation numbering
+        },
+        svg: {
+            fontCache: 'global'
+        },
+        chtml: {
+            scale: 1,
+            minScale: .5,
+            mtextFont: '',
+            merrorFont: '',
+            matchFontHeight: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processHtmlClass: 'math',
+            ignoreHtmlClass: 'tex2jax_ignore',
+            renderActions: {
+                addMenu: [0, '', '']  // Disable the context menu for math
+            }
+        },
+        startup: {
+            ready: function() {
+                console.log("MathJax is ready");
+                MathJax.startup.defaultReady();
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pensando Problemas</h1>
+            <h2>Conceptos Económicos con Dinosaurios</h2>
+        </header>
+
+        <main>
+            <section class="concept-selector">
+                <label for="concept-dropdown">Selecciona un concepto:</label>
+                <select id="concept-dropdown">
+                    <option value="" disabled selected>Elige un concepto...</option>
+                    <!-- Options will be populated from terminos.json -->
+                </select>
+            </section>
+
+            <section class="concept-display" id="concept-display">
+                <div class="concept-header">
+                    <h3 id="concept-title">Selecciona un concepto</h3>
+                </div>
+                
+                <div class="concept-content hidden" id="concept-content">
+                    <div class="latex-display">
+                        <h4>Notación matemática:</h4>
+                        <div id="latex-formula"></div>
+                    </div>
+                    
+                    <div class="explanation">
+                        <h4>Explicación con dinosaurios:</h4>
+                        <p id="dino-explanation"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="question-section hidden" id="question-section">
+                <h3>¿Tienes preguntas sobre este concepto?</h3>
+                <form id="question-form" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="question-input">Tu pregunta:</label>
+                        <textarea
+                            id="question-input"
+                            placeholder="Ej: ¿Cuál es la diferencia entre un conjunto y un subconjunto?"
+                            rows="3"
+                        ></textarea>
+                    </div>
+                    <button type="button" id="ask-button" onclick="handleQuestionSubmit(event)">Preguntar</button>
+                </form>
+            </section>
+
+            <section class="response-section hidden" id="response-section">
+                <h3>Respuesta:</h3>
+                <div class="loading-indicator hidden" id="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Procesando tu pregunta...</p>
+                </div>
+                <div id="gemini-response" class="response-content"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 Pensando Problemas - Clase de Economía</p>
+        </footer>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

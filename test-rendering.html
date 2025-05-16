@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown and LaTeX Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+    </style>
+    <!-- Polyfill for ES6 features -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: ['base', 'ams', 'noerrors', 'noundefined']
+        },
+        svg: {
+            fontCache: 'global'
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processHtmlClass: 'math',
+            ignoreHtmlClass: 'tex2jax_ignore'
+        },
+        startup: {
+            ready: function() {
+                console.log("MathJax is ready");
+                MathJax.startup.defaultReady();
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <h1>Markdown and LaTeX Rendering Test</h1>
+    
+    <div class="container" id="content"></div>
+
+    <script>
+        // Function to process text with asterisks and make it bold
+        // This function converts *text* to <strong>text</strong> before markdown processing
+        function processBoldText(text) {
+            if (!text) return '';
+            
+            // Store markdown code blocks to prevent processing inside them
+            const codeBlocks = [];
+            text = text.replace(/```[\s\S]*?```/g, match => {
+                codeBlocks.push(match);
+                return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+            });
+            
+            // Store inline code to prevent processing inside it
+            const inlineCodes = [];
+            text = text.replace(/`[^`]*`/g, match => {
+                inlineCodes.push(match);
+                return `__INLINE_CODE_${inlineCodes.length - 1}__`;
+            });
+            
+            // Process asterisks (but not double asterisks which are markdown bold)
+            text = text.replace(/\*([^*\n]+)\*/g, '<strong>$1</strong>');
+            
+            // Restore code blocks
+            codeBlocks.forEach((block, i) => {
+                text = text.replace(`__CODE_BLOCK_${i}__`, block);
+            });
+            
+            // Restore inline code
+            inlineCodes.forEach((code, i) => {
+                text = text.replace(`__INLINE_CODE_${i}__`, code);
+            });
+            
+            return text;
+        }
+
+        // Configure marked.js options for Markdown rendering
+        marked.setOptions({
+            breaks: true,           // Convert line breaks to <br>
+            gfm: true,              // GitHub flavored markdown
+            headerIds: false,       // Don't add IDs to headers
+            mangle: false,          // Don't mangle email addresses
+            sanitize: false,        // Don't sanitize HTML (we trust our content)
+            smartypants: true,      // Use "smart" typographic punctuation
+        });
+
+        // The markdown content to render
+        const markdownContent = `
+# Testing Asterisks for Bold Formatting
+
+This is normal text.
+
+This has *bold text* in the middle.
+
+Here's a sentence with *multiple* *bold* *words*.
+
+This is **already markdown bold** which should be preserved.
+
+This is a *longer phrase with multiple words* that should be bold.
+
+LaTeX equation: $E = mc^2$
+
+Complex LaTeX: $\\sum_{i=1}^{n} x_i = \\frac{n(n+1)}{2}$
+`;
+
+        // Process and render the content
+        document.addEventListener('DOMContentLoaded', function() {
+            const contentElement = document.getElementById('content');
+            const processedContent = processBoldText(markdownContent);
+            contentElement.innerHTML = marked.parse(processedContent);
+
+            // Render LaTeX if present
+            setTimeout(() => {
+                if (typeof MathJax !== 'undefined' && typeof MathJax.typeset === 'function') {
+                    console.log('Rendering LaTeX with MathJax');
+                    MathJax.typeset();
+                } else if (typeof MathJax !== 'undefined' && typeof MathJax.Hub?.Queue === 'function') {
+                    console.log('Rendering LaTeX with legacy MathJax');
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                } else {
+                    console.warn('MathJax not available or not fully loaded');
+                }
+            }, 300);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+[
+  {
+    "termino": "Conjunto",
+    "latex": "\\{x_1, x_2, \\ldots, x_n\\}",
+    "explicacion_con_dinosaurios": "Un conjunto es como una caja donde guardamos dinosaurios que tienen algo en común. Por ejemplo, podemos tener una caja con todos los dinosaurios verdes y otra con todos los dinosaurios con cuernos."
+  },
+  {
+    "termino": "Elemento",
+    "latex": "a \\in A",
+    "explicacion_con_dinosaurios": "Un elemento es un dinosaurio que está dentro de nuestra caja de dinosaurios. El T-Rex es un elemento de la caja de dinosaurios carnívoros."
+  },
+  {
+    "termino": "Subconjunto",
+    "latex": "A \\subset B",
+    "explicacion_con_dinosaurios": "Un subconjunto es como una caja más pequeña dentro de otra caja grande. La caja de dinosaurios voladores es una caja más pequeña dentro de la caja grande de todos los dinosaurios."
+  },
+  {
+    "termino": "Unión",
+    "latex": "A \\cup B",
+    "explicacion_con_dinosaurios": "La unión es cuando juntamos todos los dinosaurios de una caja con todos los dinosaurios de otra caja en una caja nueva y más grande. Si juntamos los dinosaurios verdes con los dinosaurios con cuernos, tendremos una caja con todos ellos."
+  },
+  {
+    "termino": "Intersección",
+    "latex": "A \\cap B",
+    "explicacion_con_dinosaurios": "La intersección es cuando buscamos dinosaurios que están en dos cajas diferentes al mismo tiempo. Por ejemplo, los dinosaurios que son verdes Y también tienen cuernos estarían en la intersección."
+  },
+  {
+    "termino": "Conjunto vacío",
+    "latex": "\\emptyset",
+    "explicacion_con_dinosaurios": "El conjunto vacío es como una caja donde no hay ningún dinosaurio. Imagina que tienes una caja para dinosaurios rosados, pero no existe ningún dinosaurio rosado, entonces esa caja estaría vacía."
+  },
+  {
+    "termino": "Complemento",
+    "latex": "A^c",
+    "explicacion_con_dinosaurios": "El complemento es como buscar todos los dinosaurios que NO están en nuestra caja. Si tenemos una caja con dinosaurios con plumas, el complemento son todos los dinosaurios sin plumas."
+  },
+  {
+    "termino": "Diferencia de conjuntos",
+    "latex": "A \\setminus B",
+    "explicacion_con_dinosaurios": "La diferencia de conjuntos es como tener una caja con dinosaurios grandes y quitarle todos los dinosaurios con cuernos. Te quedas solo con los dinosaurios grandes que no tienen cuernos."
+  },
+  {
+    "termino": "Producto cartesiano",
+    "latex": "A \\times B",
+    "explicacion_con_dinosaurios": "El producto cartesiano es como formar parejas de dinosaurios. Si tienes una caja con un T-Rex y un Velociraptor, y otra caja con un Triceratops y un Stegosaurus, puedes formar las parejas: T-Rex con Triceratops, T-Rex con Stegosaurus, Velociraptor con Triceratops y Velociraptor con Stegosaurus."
+  },
+  {
+    "termino": "Conjunto universal",
+    "latex": "U",
+    "explicacion_con_dinosaurios": "El conjunto universal es como un enorme parque que tiene todos los dinosaurios que existen. No importa qué tipo de dinosaurio estés buscando, estará dentro de este gran parque."
+  },
+  {
+    "termino": "Función",
+    "latex": "f: A \\rightarrow B",
+    "explicacion_con_dinosaurios": "Una función es como una máquina mágica que transforma dinosaurios. Le das un dinosaurio de la caja A, y la máquina te devuelve un dinosaurio específico de la caja B. Por ejemplo, puedes tener una máquina que convierte cada dinosaurio en su versión bebé."
+  },
+  {
+    "termino": "Función inyectiva",
+    "latex": "f: A \\rightarrow B \\text{ es inyectiva } \\iff \\forall a,a' \\in A, a \\neq a' \\Rightarrow f(a) \\neq f(a')",
+    "explicacion_con_dinosaurios": "Una función inyectiva es como una máquina que convierte cada dinosaurio en un color diferente. El T-Rex se vuelve rojo, el Velociraptor azul, y el Triceratops verde. Cada dinosaurio tiene su propio color especial y no hay dos dinosaurios con el mismo color."
+  },
+  {
+    "termino": "Función sobreyectiva",
+    "latex": "f: A \\rightarrow B \\text{ es sobreyectiva } \\iff \\forall b \\in B, \\exists a \\in A: f(a) = b",
+    "explicacion_con_dinosaurios": "Una función sobreyectiva es como repartir sombreros de colores a los dinosaurios. Tenemos sombreros rojos, azules y verdes, y debemos asegurarnos de que al menos un dinosaurio use cada color de sombrero. No puede quedar ningún color sin usar."
+  },
+  {
+    "termino": "Función biyectiva",
+    "latex": "f: A \\rightarrow B \\text{ es biyectiva } \\iff \\text{ es inyectiva y sobreyectiva}",
+    "explicacion_con_dinosaurios": "Una función biyectiva es como asignar a cada dinosaurio una cama para dormir. Cada dinosaurio tiene exactamente una cama (inyectiva) y cada cama tiene exactamente un dinosaurio (sobreyectiva). No hay dinosaurios sin cama ni camas vacías."
+  },
+  {
+    "termino": "Función inversa",
+    "latex": "f^{-1}: B \\rightarrow A",
+    "explicacion_con_dinosaurios": "La función inversa es como una máquina mágica que deshace lo que hizo la primera máquina. Si la primera máquina convirtió al T-Rex en un dinosaurio azul, la máquina inversa transforma al dinosaurio azul de nuevo en un T-Rex."
+  },
+  {
+    "termino": "Dominio",
+    "latex": "Dom(f)",
+    "explicacion_con_dinosaurios": "El dominio es como la fila de dinosaurios esperando para entrar a la máquina mágica transformadora. Son todos los dinosaurios que pueden entrar en la máquina."
+  },
+  {
+    "termino": "Codominio",
+    "latex": "Codom(f)",
+    "explicacion_con_dinosaurios": "El codominio es como el gran parque donde pueden ir a parar todos los dinosaurios después de salir de la máquina transformadora. Es el lugar donde pueden estar todos los posibles dinosaurios transformados."
+  },
+  {
+    "termino": "Rango/Imagen",
+    "latex": "Rng(f) = \\{f(a) | a \\in A\\}",
+    "explicacion_con_dinosaurios": "El rango es como los dinosaurios que realmente salen de la máquina transformadora. Si la máquina solo transforma dinosaurios en color rojo o azul (aunque podría transformarlos en verde también), el rango solo incluye dinosaurios rojos y azules."
+  },
+  {
+    "termino": "Composición de funciones",
+    "latex": "(g \\circ f)(x) = g(f(x))",
+    "explicacion_con_dinosaurios": "La composición de funciones es como pasar por dos máquinas transformadoras, una después de otra. Primero, el dinosaurio entra en la máquina f que lo convierte en un dinosaurio bebé, y luego entra en la máquina g que le pone un sombrero. Al final tenemos un dinosaurio bebé con sombrero."
+  },
+  {
+    "termino": "Cuantificador universal",
+    "latex": "\\forall x",
+    "explicacion_con_dinosaurios": "El cuantificador universal es como decir 'TODOS los dinosaurios'. Por ejemplo, TODOS los dinosaurios necesitan comer para vivir. No hay ninguna excepción, se aplica a cada dinosaurio."
+  },
+  {
+    "termino": "Cuantificador existencial",
+    "latex": "\\exists x",
+    "explicacion_con_dinosaurios": "El cuantificador existencial es como decir 'AL MENOS UN dinosaurio'. Por ejemplo, AL MENOS UN dinosaurio puede volar. No decimos cuántos exactamente, solo que existe por lo menos uno que puede hacerlo."
+  },
+  {
+    "termino": "Negación",
+    "latex": "\\neg p",
+    "explicacion_con_dinosaurios": "La negación es como decir lo contrario. Si decimos 'el dinosaurio es grande', la negación sería 'el dinosaurio NO es grande'."
+  },
+  {
+    "termino": "Conjunción",
+    "latex": "p \\land q",
+    "explicacion_con_dinosaurios": "La conjunción es como decir 'Y' entre dos cosas. Por ejemplo, 'el dinosaurio es verde Y tiene cuernos'. Para que sea verdad, el dinosaurio debe ser verde y también tener cuernos."
+  },
+  {
+    "termino": "Disyunción",
+    "latex": "p \\lor q",
+    "explicacion_con_dinosaurios": "La disyunción es como decir 'O' entre dos cosas. Por ejemplo, 'el dinosaurio puede volar O puede nadar'. Para que sea verdad, el dinosaurio debe poder volar, o nadar, o ambas cosas."
+  },
+  {
+    "termino": "Implicación",
+    "latex": "p \\Rightarrow q",
+    "explicacion_con_dinosaurios": "La implicación es como decir 'SI... ENTONCES'. Por ejemplo, 'SI el dinosaurio tiene alas, ENTONCES puede volar'. Significa que cada vez que encontramos un dinosaurio con alas, sabemos que puede volar."
+  },
+  {
+    "termino": "Doble implicación",
+    "latex": "p \\Leftrightarrow q",
+    "explicacion_con_dinosaurios": "La doble implicación es como decir 'SI Y SOLO SI'. Por ejemplo, 'un dinosaurio está contento SI Y SOLO SI está comiendo'. Esto significa que cada vez que el dinosaurio está comiendo, está contento, y cada vez que está contento, está comiendo."
+  },
+  {
+    "termino": "Tabla de verdad",
+    "latex": "\\begin{array}{|c|c|c|} \\hline p & q & p \\land q \\\\ \\hline V & V & V \\\\ \\hline V & F & F \\\\ \\hline F & V & F \\\\ \\hline F & F & F \\\\ \\hline \\end{array}",
+    "explicacion_con_dinosaurios": "Una tabla de verdad es como una guía para saber si un dinosaurio puede entrar al parque. Imagina que para entrar debe ser grande Y tener cuernos. La tabla nos dice que solo pueden entrar los dinosaurios que cumplen AMBAS condiciones, como el Triceratops, que es grande y tiene cuernos."
+  },
+  {
+    "termino": "Proposición",
+    "latex": "p",
+    "explicacion_con_dinosaurios": "Una proposición es como una frase sobre dinosaurios que puede ser verdadera o falsa. Por ejemplo, 'todos los dinosaurios tienen dientes' o 'algunos dinosaurios pueden volar'. Cada frase puede ser correcta o incorrecta."
+  },
+  {
+    "termino": "Premisa",
+    "latex": "p_1, p_2, \\ldots, p_n",
+    "explicacion_con_dinosaurios": "Las premisas son como pistas sobre dinosaurios que ya sabemos que son verdaderas. Por ejemplo, sabemos que 'todos los T-Rex son carnívoros' y 'todos los carnívoros tienen dientes afilados'. Estas son nuestras pistas o premisas."
+  },
+  {
+    "termino": "Conclusión",
+    "latex": "\\therefore q",
+    "explicacion_con_dinosaurios": "La conclusión es lo que descubrimos usando nuestras pistas sobre dinosaurios. Si sabemos que 'todos los T-Rex son carnívoros' y 'todos los carnívoros tienen dientes afilados', podemos concluir que 'todos los T-Rex tienen dientes afilados'."
+  },
+  {
+    "termino": "Argumento válido",
+    "latex": "p_1, p_2, \\ldots, p_n \\vdash q",
+    "explicacion_con_dinosaurios": "Un argumento válido es como un puzzle de dinosaurios donde todas las piezas encajan perfectamente. Si sabemos que 'Rex es un T-Rex' y 'todos los T-Rex son dinosaurios', entonces podemos estar seguros de que 'Rex es un dinosaurio'. No hay forma de que las primeras frases sean verdaderas y la última falsa."
+  },
+  {
+    "termino": "Algoritmo",
+    "latex": "\\text{Algoritmo}",
+    "explicacion_con_dinosaurios": "Un algoritmo es como una receta para hacer algo paso a paso. Por ejemplo, para encontrar el dinosaurio más grande: 1) Mide cada dinosaurio, 2) Compara sus tamaños, 3) El que mida más es el más grande. Sigues estos pasos en orden y siempre llegas al resultado correcto."
+  },
+  {
+    "termino": "Suma",
+    "latex": "a + b",
+    "explicacion_con_dinosaurios": "Sumar es como juntar dos grupos de dinosaurios. Si tienes 3 dinosaurios jugando con pelotas y llegan 2 dinosaurios más, ahora tienes 5 dinosaurios jugando."
+  },
+  {
+    "termino": "Resta",
+    "latex": "a - b",
+    "explicacion_con_dinosaurios": "Restar es cuando algunos dinosaurios se van a dormir. Si tienes 7 dinosaurios comiendo hojas y 4 se van a dormir, te quedan 3 dinosaurios todavía comiendo."
+  },
+  {
+    "termino": "Multiplicación",
+    "latex": "a \\cdot b",
+    "explicacion_con_dinosaurios": "Multiplicar es como tener varias manadas de dinosaurios del mismo tamaño. Si tienes 3 manadas y en cada manada hay 4 dinosaurios, en total tienes 12 dinosaurios."
+  },
+  {
+    "termino": "División",
+    "latex": "a \\div b",
+    "explicacion_con_dinosaurios": "Dividir es repartir dinosaurios en grupos iguales. Si tienes 8 dinosaurios y quieres hacer 2 equipos iguales para jugar, cada equipo tendrá 4 dinosaurios."
+  },
+  {
+    "termino": "Mayor que",
+    "latex": "a > b",
+    "explicacion_con_dinosaurios": "Mayor que significa que un grupo tiene más dinosaurios que otro. El T-Rex es más grande que el Velociraptor, así que decimos que el T-Rex es mayor que el Velociraptor."
+  },
+  {
+    "termino": "Menor que",
+    "latex": "a < b",
+    "explicacion_con_dinosaurios": "Menor que significa que un grupo tiene menos dinosaurios que otro. El Compsognathus es más pequeño que el Triceratops, así que decimos que el Compsognathus es menor que el Triceratops."
+  },
+  {
+    "termino": "Igual",
+    "latex": "a = b",
+    "explicacion_con_dinosaurios": "Igual significa que dos grupos tienen exactamente el mismo número de dinosaurios. Si un grupo tiene 5 dinosaurios y otro grupo también tiene 5 dinosaurios, decimos que los grupos son iguales."
+  },
+  {
+    "termino": "Índice",
+    "latex": "a_i",
+    "explicacion_con_dinosaurios": "Un índice es como poner números a los dinosaurios para saber cuál es cuál. Si tenemos varios T-Rex, podemos llamarlos T-Rex₁ (T-Rex uno), T-Rex₂ (T-Rex dos), T-Rex₃ (T-Rex tres), para no confundirlos."
+  },
+  {
+    "termino": "Sumatoria",
+    "latex": "\\sum_{i=1}^{n} a_i",
+    "explicacion_con_dinosaurios": "Una sumatoria es como contar todos los huevos que pusieron varios dinosaurios. Si el dinosaurio 1 puso 3 huevos, el dinosaurio 2 puso 5 huevos, y el dinosaurio 3 puso 2 huevos, la sumatoria nos dice que hay 3 + 5 + 2 = 10 huevos en total."
+  },
+  {
+    "termino": "Productoria",
+    "latex": "\\prod_{i=1}^{n} a_i",
+    "explicacion_con_dinosaurios": "Una productoria es como calcular cuántos grupos diferentes de dinosaurios podemos formar. Si tenemos 3 colores de dinosaurios y 2 tamaños diferentes, podemos formar 3 × 2 = 6 grupos diferentes: pequeños rojos, pequeños azules, pequeños verdes, grandes rojos, grandes azules y grandes verdes."
+  },
+  {
+    "termino": "Número natural",
+    "latex": "\\mathbb{N}",
+    "explicacion_con_dinosaurios": "Los números naturales son como contar dinosaurios: 1, 2, 3, 4, 5... Son los números que usamos para decir cuántos dinosaurios hay en total."
+  },
+  {
+    "termino": "Número entero",
+    "latex": "\\mathbb{Z}",
+    "explicacion_con_dinosaurios": "Los números enteros son como contar pasos de dinosaurio. Si camina hacia adelante son números positivos (1, 2, 3...), si camina hacia atrás son números negativos (-1, -2, -3...), y si se queda quieto es cero (0)."
+  },
+  {
+    "termino": "Recursividad",
+    "latex": "f(n) = \\begin{cases} c, & \\text{si } n = 0 \\\\ g(f(n-1)), & \\text{si } n > 0 \\end{cases}",
+    "explicacion_con_dinosaurios": "La recursividad es como una historia de dinosaurios que se repite. Para saber cómo creció un dinosaurio de 5 años, primero debes saber cómo era a los 4 años, y para saber cómo era a los 4 años, primero debes saber cómo era a los 3 años, y así hasta llegar a cuando era un bebé dinosaurio."
+  },
+  {
+    "termino": "Fracción",
+    "latex": "\\frac{a}{b}",
+    "explicacion_con_dinosaurios": "Una fracción es como repartir pizza de dinosaurio. Si tienes una pizza y la cortas en 4 pedazos iguales, cada dinosaurio recibe 1/4 (un cuarto) de la pizza."
+  },
+  {
+    "termino": "Potencia",
+    "latex": "a^n",
+    "explicacion_con_dinosaurios": "Una potencia es como cuando un dinosaurio da saltos muy, muy rápidos. Si un dinosaurio da 3 saltos y en cada salto avanza el doble que antes, al final habrá avanzado 2³ = 8 veces su primer salto."
+  },
+  {
+    "termino": "Raíz cuadrada",
+    "latex": "\\sqrt{a}",
+    "explicacion_con_dinosaurios": "La raíz cuadrada es como buscar el lado de un corral cuadrado para dinosaurios. Si el corral tiene 9 metros cuadrados de espacio, cada lado del corral mide 3 metros."
+  },
+  {
+    "termino": "Variable",
+    "latex": "x",
+    "explicacion_con_dinosaurios": "Una variable es como un dinosaurio misterioso que puede ser cualquier tipo de dinosaurio. Podría ser un T-Rex, un Triceratops o un Velociraptor. No lo sabemos hasta que resolvemos el acertijo."
+  },
+  {
+    "termino": "Constante",
+    "latex": "c",
+    "explicacion_con_dinosaurios": "Una constante es como un dinosaurio que nunca cambia. Por ejemplo, todos los días el Brachiosaurus come exactamente 100 hojas, ni una más ni una menos. Ese número 100 es una constante."
+  },
+  {
+    "termino": "Parámetro",
+    "latex": "f(x; a, b)",
+    "explicacion_con_dinosaurios": "Un parámetro es como las reglas para un juego de dinosaurios que podemos cambiar. Si jugamos a las carreras, podemos decidir que la pista sea corta o larga, que haya obstáculos o no. Estas reglas son los parámetros del juego."
+  },
+  {
+    "termino": "Lema",
+    "latex": "\\text{Lema}",
+    "explicacion_con_dinosaurios": "Un lema es como una pequeña pista sobre dinosaurios que nos ayuda a resolver un misterio más grande. Antes de descubrir por qué los dinosaurios se extinguieron, primero tenemos que saber qué comían y dónde vivían."
+  },
+  {
+    "termino": "Teorema",
+    "latex": "\\text{Teorema}",
+    "explicacion_con_dinosaurios": "Un teorema es como un gran descubrimiento sobre dinosaurios que hemos comprobado muy cuidadosamente. Por ejemplo, 'todos los dinosaurios con plumas pueden mantener el calor mejor que los dinosaurios sin plumas'. Es algo que sabemos que es verdad."
+  },
+  {
+    "termino": "Corolario",
+    "latex": "\\text{Corolario}",
+    "explicacion_con_dinosaurios": "Un corolario es como un descubrimiento extra sobre dinosaurios que obtenemos gratis después de hacer un gran descubrimiento. Si descubrimos que 'todos los dinosaurios con plumas pueden volar', entonces obtenemos gratis que 'el T-Rex no tenía plumas' porque sabemos que no podía volar."
+  },
+  {
+    "termino": "Axioma",
+    "latex": "\\text{Axioma}",
+    "explicacion_con_dinosaurios": "Un axioma es como una regla básica sobre dinosaurios que aceptamos sin necesidad de comprobarla. Por ejemplo, 'todos los dinosaurios necesitan comida para vivir'. Es tan obvio que no necesitamos demostrarlo."
+  },
+  {
+    "termino": "Prueba",
+    "latex": "\\text{Prueba}",
+    "explicacion_con_dinosaurios": "Una prueba es como seguir huellas de dinosaurios para descubrir dónde viven. Sigues un rastro de pistas, una tras otra, hasta que llegas a la cueva donde vive el dinosaurio. Así demuestras que el dinosaurio realmente vive allí."
+  },
+  {
+    "termino": "Contradicción",
+    "latex": "\\text{Contradicción}",
+    "explicacion_con_dinosaurios": "Una contradicción es como decir que un dinosaurio es al mismo tiempo muy grande y muy pequeño. No puede ser ambas cosas a la vez, así que sabemos que algo está mal en lo que estamos diciendo."
+  },
+  {
+    "termino": "Inducción matemática",
+    "latex": "\\text{Inducción}",
+    "explicacion_con_dinosaurios": "La inducción matemática es como enseñar a los dinosaurios a formar una fila. Primero, le enseñas al primer dinosaurio a ponerse en fila. Luego, le enseñas a cada dinosaurio a ponerse detrás del dinosaurio anterior. Al final, ¡todos los dinosaurios están en fila!"
+  },
+  {
+    "termino": "Permutación",
+    "latex": "P(n,r) = \\frac{n!}{(n-r)!}",
+    "explicacion_con_dinosaurios": "Una permutación es como organizar dinosaurios en una fila para una carrera. Si tienes 5 dinosaurios y quieres elegir a 3 para que ocupen el primer, segundo y tercer lugar, hay muchas formas diferentes de organizarlos. Cada ordenación posible es una permutación."
+  },
+  {
+    "termino": "Combinación",
+    "latex": "C(n,r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!}",
+    "explicacion_con_dinosaurios": "Una combinación es como elegir un equipo de dinosaurios sin importar quién es el capitán o quién va primero. Si tienes 7 dinosaurios y quieres elegir 3 para tu equipo, solo te importa cuáles 3 dinosaurios eliges, no en qué orden los eliges."
+  },
+  {
+    "termino": "Valor esperado",
+    "latex": "E[X] = \\sum_{i} x_i \\cdot P(X = x_i)",
+    "explicacion_con_dinosaurios": "El valor esperado es como adivinar cuántos huevos pone un dinosaurio al día en promedio. Si pone 2 huevos la mitad de los días y 3 huevos la otra mitad, esperamos que ponga 2.5 huevos al día, aunque nunca ponga exactamente 2.5 huevos."
+  },
+  {
+    "termino": "Ecuación diferencial",
+    "latex": "\\frac{dy}{dx} = f(x,y)",
+    "explicacion_con_dinosaurios": "Una ecuación diferencial es como una receta para el crecimiento de un dinosaurio. No nos dice exactamente cuán grande será el dinosaurio en cada momento, pero nos dice cómo cambia su tamaño día a día según lo que come y cuánto se mueve."
+  },
+  {
+    "termino": "Límite",
+    "latex": "\\lim_{x \\to a} f(x) = L",
+    "explicacion_con_dinosaurios": "Un límite es como cuando un dinosaurio se acerca mucho a un lago pero nunca se mete al agua. Puede acercarse tanto como quiera, estar justo al borde, mojar sus patitas, pero decide no nadar. El límite es ese punto al borde del agua."
+  },
+  {
+    "termino": "Derivada",
+    "latex": "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}",
+    "explicacion_con_dinosaurios": "La derivada es como medir qué tan rápido está creciendo un dinosaurio en un momento exacto. Si medimos que hoy creció 2 cm, y ayer creció 1.8 cm, y antes de ayer creció 1.6 cm, podemos ver que está creciendo cada vez más rápido."
+  },
+  {
+    "termino": "Integral",
+    "latex": "\\int_{a}^{b} f(x) dx",
+    "explicacion_con_dinosaurios": "Una integral es como calcular cuánta comida come un dinosaurio durante todo el día. Si sabemos cuánto come cada hora (a veces más, a veces menos), podemos sumar todo para saber cuánto comió en total desde la mañana hasta la noche."
+  },
+  {
+    "termino": "Moda estadística",
+    "latex": "\\text{Moda}",
+    "explicacion_con_dinosaurios": "La moda es el tipo de dinosaurio que más se repite en un parque. Si en un parque hay 5 T-Rex, 3 Velociraptors y 2 Triceratops, la moda es el T-Rex porque es el que más hay."
+  },
+  {
+    "termino": "Mediana estadística",
+    "latex": "\\text{Mediana}",
+    "explicacion_con_dinosaurios": "La mediana es como poner a los dinosaurios en fila del más pequeño al más grande, y elegir el que está justo en el medio. Si hay un número par de dinosaurios, tomamos los dos del medio y calculamos su tamaño promedio."
+  }
+]
