@@ -127,15 +127,16 @@ Consulta un concepto matemático y una pregunta relacionada. El backend construy
 
 ```json
 {
-  "concept": "Homeomorfismo",
-  "question": "¿Qué propiedades topológicas conserva?"
+  "concept": "Fracción",
+  "latex": "\frac{a}{b}",
+  "question": "¿Qué significa la parte de arriba en una fracción??"
 }
 
 ```
 Response:
 ```json
 {
-  "response": "Para responder sobre **Homeomorfismo**, usaré la información disponible.\n\nUn homeomorfismo es una función biyectiva..."
+  "response": "Para responder sobre **Fracción**, usaré la información disponible.\n\n En una fracción la parte de arriba signfica..."
 }
 
 ```
