@@ -121,29 +121,42 @@ Respuesta:
 ```
 
 **POST** `/api/ask`  
-Descripción: Retorna explicación detallada de notación.
+Consulta un concepto matemático y una pregunta relacionada. El backend construye un prompt personalizado con base en la definición del concepto (desde `terminos.json`) y consulta la API de Gemini para generar una respuesta explicativa con estilo pedagógico.
 
-Request Body:
+## Request Body
+
 ```json
 {
-  "term": "Homeomorfismo",
+  "concept": "Homeomorfismo",
   "question": "¿Qué propiedades topológicas conserva?"
 }
-```
 
+```
 Response:
 ```json
 {
-  "prompt_sent": "<prompt completo>",
-  "answer": "Un homeomorfismo es una función biyectiva..."
+  "response": "Para responder sobre **Homeomorfismo**, usaré la información disponible.\n\nUn homeomorfismo es una función biyectiva..."
 }
-```
 
-Ejemplo con `curl`:
+```
+## Funcionamiento interno
+
+- Recupera la definición del concepto desde `terminos.json`
+- Construye un prompt con notación LaTeX y tono amigable
+- Si Gemini responde, retorna su respuesta enriquecida
+- Si falla, responde con un mensaje generado localmente como fallback
+
+## Errores posibles
+
+- `404`: Si el concepto no existe
+- `503`: Si no se encuentra la clave API de Gemini
+
+## Ejemplo con curl
+
 ```bash
 curl -X POST http://localhost:8000/api/ask \
   -H "Content-Type: application/json" \
-  -d '{"term":"Conjunto","question":"¿Cómo se define matemáticamente?"}'
+  -d '{"concept":"Conjunto","question":"¿Cómo se define matemáticamente?"}'
 ```
 ---
 ## 6. Ingeniería de Prompts
