@@ -165,21 +165,11 @@ La generación de respuestas se basa en un `system prompt` fijo, más un mensaje
 
 ### Prompt utilizado (definido en `app.py`):
 
-```python
-system_prompt = {
-    "role": "system",
-    "content": (
-        "Eres un asistente matemático experto en notación formal. "
-        "Explica con rigor, usando ejemplos y LaTeX cuando sea necesario."
-    )
-}
-```
+
 El user_prompt se genera dinámicamente así:
 ```python
-user_prompt = {
-    "role": "user",
-    "content": f"Término: {term}. Pregunta: {question}"
-}
+prompt = f"""Responde la siguiente pregunta usando lenguaje apropiado para un estudiante de primer año de economía, usa analogías y lenguaje ambientado en dinosaurios para que tenga un tono divertido y relajado. Usa la siguiente notación {latex} y mete entre signos de $ las ecuaciones cuando quieras utilizar mathmode, además NO utilices comandos como \text, manten el texto relativamente plano. La respuesta va a ser procesada por una webapp, entonces mantén la respuesta sin simbolos que puedan dañar el HTML, y no hables del prompt. Solo responde la pregunta basado en las instrucciones.
+    {request.question}"""
 ```
 
 ### 7. Seguridad y Gestión de Claves
